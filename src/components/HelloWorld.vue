@@ -14,6 +14,7 @@
 </template>
 
 <script>
+    import fs from 'fs';
     export default {
         name: 'hello',
         data () {
@@ -31,13 +32,25 @@
                 cb(results);
             },
             createFilter(queryString){
-                return (city)=>{
+                return (city) =>{
                     return (city.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
                 };
             },
             loadAll(){
-
+                var res = '';
+                /*fs.readFile('/city_object.json', function (err, data) {
+                    if (err) throw err;
+                    res = data;
+                    console.log(res);
+                })*/
+            },
+            handleSelect(item) {
+                console.log(item);
             }
+        },
+        mounted(){
+            this.cities = this.loadAll();
+            console.log(fs.isEmpty()?'Fs is available here!':'Oh...nonono');
         }
     }
 </script>
