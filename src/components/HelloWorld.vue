@@ -1,7 +1,7 @@
 <template>
     <div class="hello">
         <h1>{{ msg }}</h1>
-        <h2>Essential Links</h2>
+        <h2>Autocomplete Component</h2>
         <el-autocomplete
                 class="inline-input"
                 v-model="input"
@@ -18,7 +18,7 @@
         name: 'hello',
         data () {
             return {
-                msg: 'Welcome to Your Vue.js App',
+                msg: 'Hi,It\'s Element UI Dashboard. ',
                 input: '',
                 cities: []
             };
@@ -26,19 +26,21 @@
         methods: {
             querySearch(queryString, cb){
                 var cities = this.cities;
-                console.log(cities);
                 var results = queryString ? cities.filter(this.createFilter(queryString)) : cities;
                 //cb
-                console.log(results);
                 cb(results);
             },
             createFilter(queryString){
-                return (city) =>{
+                /*return function (city) {
+                    return (city.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
+                }*/
+                //ES6 way
+                return (city)=>{
                     return (city.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
                 };
             },
             loadAll(){
-                return [{"value":'shanghai'},{"value":"beijing"}];
+                return [{"value": 'shanghai'}, {"value": "beijing"}, {"value": "guangzhou"}, {"value": "shenzhen"}];
             },
             handleSelect(item) {
                 console.log(item);
