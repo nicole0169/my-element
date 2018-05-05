@@ -6,16 +6,17 @@ import Province from '@/components/Province'
 Vue.use(Router)
 
 export default new Router({
-    routes: [
-        {
-            path: '/',
-            name: 'HelloWorld',
-            component: HelloWorld
-        },
-        {
-            path: '/province',
-            name: 'Province',
-            component: Province
-        }
-    ]
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'HelloWorld',
+      component: HelloWorld
+    },
+    {
+      path: '/province',
+      name: 'Province',
+      component: Province
+    }
+  ]
 })

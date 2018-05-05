@@ -2,18 +2,28 @@
     <div class="hello">
         <h1>{{ msg }}</h1>
         <h2>Select Component</h2>
-        <el-select v-model="input"
+        <el-select v-model="inputProvince"
                    placeholder="请选择省份"
-                   @change="handleSelect">
+                   @change="handleProvinceSelect">
             <el-option v-for="item in provinces"
                        :key="item.id"
                        :label="item.name"
                        :value="item.id">
             </el-option>
         </el-select>
-        <el-select v-model="input2"
-                   placeholder="请选择城市">
+        <el-select v-model="inputCity"
+                   placeholder="请选择城市"
+                   @change="handleCitySelect">
             <el-option v-for="item in cities"
+                       :key="item.id"
+                       :label="item.name"
+                       :value="item.id">
+            </el-option>
+        </el-select>
+        <el-select v-model="inputArea"
+                   placeholder="请选择区县"
+                  @change="handleAreaSelect">
+            <el-option v-for="item in areas"
                        :key="item.id"
                        :label="item.name"
                        :value="item.id">
@@ -25,25 +35,43 @@
 <script>
     import PROVINCES from '../assets/provinces'
     import CITIES from '../assets/cities'
+    import AREAS from '../assets/areas'
     export default {
         name: 'hello',
         data() {
             return {
                 msg: 'Hi,It\'s Element UI Dashboard. ',
-                input: '',
-                input2: '',
+                inputProvince: '',
+                inputCity: '',
+                inputArea:'',
                 provinces: [],
-                cities: []
+                cities: [],
+                areas: []
             };
         },
         methods: {
-            handleSelect(item){
+            handleProvinceSelect(item){
+                this.inputCity = '';
+                this.inputArea = '';
                 console.log(item);
                 this.cities = this.getCities(item);
+                this.areas = [];
+            },
+            handleCitySelect(item){
+                this.inputArea = '';
+                console.log(item);
+                this.areas = this.getAreas(item);
+            },
+            handleAreaSelect(item){
+              console.log(item);
             },
             getCities(itemId){
                 let cities = CITIES;
                 return cities[itemId];
+            },
+            getAreas(itemId){
+                let areas = AREAS;
+                return areas[itemId];
             },
             loadAll(){
                 return PROVINCES;
