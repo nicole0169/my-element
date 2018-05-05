@@ -16,7 +16,7 @@
 <script>
     export default {
         name: 'hello',
-        data () {
+        data() {
             return {
                 msg: 'Hi,It\'s Element UI Dashboard. ',
                 input: '',
