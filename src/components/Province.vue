@@ -61,6 +61,7 @@
                 this.inputArea = '';
                 this.areas = AREAS[item];
               }
+              this.$root.bus.$emit('province_code',item);
             },
             loadAll(){
                 return PROVINCES;
