@@ -7,6 +7,7 @@
             <!-- <router-link> 默认会被渲染成一个<a>标签 -->
             <router-link to="/">Go to Index</router-link>
             <router-link to="/province">Go to Province</router-link>
+            <router-link to="/shipping">Go to Shipping</router-link>
         </p>
         <router-view/>
     </div>
