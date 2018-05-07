@@ -4,7 +4,7 @@
         <h2>Select Component</h2>
         <el-select v-model="inputProvince"
                    placeholder="请选择省份"
-                   @change="handleProvinceSelect">
+                   @change="handleSelect">
             <el-option v-for="item in provinces"
                        :key="item.id"
                        :label="item.name"
@@ -13,7 +13,7 @@
         </el-select>
         <el-select v-model="inputCity"
                    placeholder="请选择城市"
-                   @change="handleCitySelect">
+                   @change="handleSelect">
             <el-option v-for="item in cities"
                        :key="item.id"
                        :label="item.name"
@@ -22,7 +22,7 @@
         </el-select>
         <el-select v-model="inputArea"
                    placeholder="请选择区县"
-                  @change="handleAreaSelect">
+                   @change="handleSelect">
             <el-option v-for="item in areas"
                        :key="item.id"
                        :label="item.name"
@@ -50,28 +50,17 @@
             };
         },
         methods: {
-            handleProvinceSelect(item){
+            handleSelect(item){
+              console.log(item);
+              if(CITIES[item]){
                 this.inputCity = '';
                 this.inputArea = '';
-                console.log(item);
-                this.cities = this.getCities(item);
                 this.areas = [];
-            },
-            handleCitySelect(item){
+                this.cities = CITIES[item];
+              }else if(AREAS[item]){
                 this.inputArea = '';
-                console.log(item);
-                this.areas = this.getAreas(item);
-            },
-            handleAreaSelect(item){
-              console.log(item);
-            },
-            getCities(itemId){
-                let cities = CITIES;
-                return cities[itemId];
-            },
-            getAreas(itemId){
-                let areas = AREAS;
-                return areas[itemId];
+                this.areas = AREAS[item];
+              }
             },
             loadAll(){
                 return PROVINCES;
