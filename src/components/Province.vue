@@ -43,7 +43,7 @@
                 msg: 'Hi,It\'s Element UI Dashboard. ',
                 inputProvince: '',
                 inputCity: '',
-                inputArea:'',
+                inputArea: '',
                 provinces: [],
                 cities: [],
                 areas: []
@@ -51,17 +51,17 @@
         },
         methods: {
             handleSelect(item){
-              console.log(item);
-              if(CITIES[item]){
-                this.inputCity = '';
-                this.inputArea = '';
-                this.areas = [];
-                this.cities = CITIES[item];
-              }else if(AREAS[item]){
-                this.inputArea = '';
-                this.areas = AREAS[item];
-              }
-              this.$root.bus.$emit('province_code',item);
+                console.log(item);
+                if (CITIES[item]) {
+                    this.inputCity = '';
+                    this.inputArea = '';
+                    this.areas = [];
+                    this.cities = CITIES[item];
+                } else if (AREAS[item]) {
+                    this.inputArea = '';
+                    this.areas = AREAS[item];
+                }
+                this.$root.bus.$emit('province_code', item);
             },
             loadAll(){
                 return PROVINCES;
