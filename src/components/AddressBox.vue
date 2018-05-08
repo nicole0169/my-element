@@ -33,7 +33,6 @@
               if (PROVINCES_OBJ[arg]) {
                 console.log(PROVINCES_OBJ[arg].name);
                 that.setAddressAreaVal(PROVINCES_OBJ[arg].name);
-
               }else if(CITIES_OBJ[arg]){
                 console.log(CITIES_OBJ[arg].name);
                 that.setAddressAreaVal(CITIES_OBJ[arg].name);
