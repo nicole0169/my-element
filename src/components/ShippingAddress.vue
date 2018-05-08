@@ -1,7 +1,8 @@
 <template>
     <div class="hello">
-        <province></province>
+        <province @handleSelect="handleProvince"></province>
         <addressbox></addressbox>
+        <p>{{ provincedata }}</p>
     </div>
 </template>
 <script>
@@ -15,7 +16,14 @@
             'addressbox': AddressBox
         },
         data() {
-            return {};
+            return {
+                provincedata: ''
+            };
+        },
+        methods: {
+            handleProvince(item){
+                this.provincedata = item;
+            }
         }
     }
 </script>
