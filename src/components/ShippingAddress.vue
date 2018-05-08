@@ -1,6 +1,6 @@
 <template>
     <div class="hello">
-        <province @handleSelect="handleProvince"></province>
+        <province @handleSelect="handleProvince" message=""></province>
         <addressbox></addressbox>
         <p>{{ provincedata }}</p>
     </div>

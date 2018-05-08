@@ -29,6 +29,7 @@
                        :value="item.id">
             </el-option>
         </el-select>
+        <span>{{ message }}</span>
     </div>
 </template>
 
@@ -49,6 +50,7 @@
                 areas: []
             };
         },
+        props: ['message'],
         methods: {
             handleSelect(item){
                 console.log(item);
@@ -62,7 +64,7 @@
                     this.areas = AREAS[item];
                 }
                 this.$root.bus.$emit('province_code', item);
-                this.$emit('handleSelect',item);
+                this.$emit('handleSelect', item);
             },
             loadAll(){
                 return PROVINCES;
