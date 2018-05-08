@@ -42,7 +42,7 @@
                 }
             })
         },
-        beforDestroy() {
+        beforeDestroy() {
             this.$root.bus.$off("province_code");
         }
     }
